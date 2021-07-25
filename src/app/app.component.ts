@@ -21,7 +21,7 @@ export class AppComponent {
   top: any;
   left: any;
   expand = false
-  
+  scrollPercent: number = 0
 
   constructor(private scroller: ViewportScroller, private fb: FormBuilder) {
     this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
@@ -36,7 +36,9 @@ export class AppComponent {
     return this.cForm.controls
   }
 
-  getPositions():void {
+
+
+  getPositions(): void {
     this.worksSection = document.getElementById('works')
     this.aboutSection = document.getElementById('aboutMe')
     this.contactSection = document.getElementById('contact')
@@ -69,8 +71,26 @@ export class AppComponent {
   }
 
   printvh() {
+    /*  let scrollTop = window.scrollY;
+      let docHeight = document.body.offsetHeight;
+      let winHeight = window.innerHeight;
+      let scrollPercent = scrollTop / (docHeight - winHeight);
+      this.scrollPercent = Math.round(scrollPercent * 100);*/
     this.scrollPosition = this.scroller.getScrollPosition()
     console.log(this.scrollPosition[1])
+    console.log("% de scroll", this.scrollPercent)
+    if(this.scrollPosition[1] < this.worksPos){
+      this.scrollPercent = 0
+    }
+    if (this.scrollPosition[1] >= (this.worksPos - 250) && this.scrollPosition[1] < (this.aboutPos - 450)) {
+      this.scrollPercent = 33
+    }
+    if (this.scrollPosition[1] >= (this.aboutPos - 250) && this.scrollPosition[1] < (this.contactPos - 450)) {
+      this.scrollPercent = 66
+    }
+    if (this.scrollPosition[1] >= (this.contactPos - 250)) {
+      this.scrollPercent = 99
+    }
   }
 
   scrollToWorks() {
