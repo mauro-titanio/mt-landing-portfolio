@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "portfolio-606c3": {
+      "hosting": {
+        "mt-website": [
+          "portfolio-606c3"
+        ]
+      }
+    }
+  }
+}

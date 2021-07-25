@@ -1,6 +1,9 @@
 import { ViewportScroller } from '@angular/common';
+
 import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Message } from './shared/models/message';
+import { CrudService } from './shared/services/crud.service';
 
 @Component({
   selector: 'app-root',
@@ -22,21 +25,21 @@ export class AppComponent {
   left: any;
   expand = false
   scrollPercent: number = 0
+  msg: Message | undefined
+  mSent = false
 
-  constructor(private scroller: ViewportScroller, private fb: FormBuilder) {
+  constructor(private scroller: ViewportScroller, private fb: FormBuilder, private crud: CrudService) {
     this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     this.cForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       email: ['', [Validators.required, Validators.email]],
-      msg: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(1000)]],
+      message: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(1000)]],
     })
   }
   get f() {
     return this.cForm.controls
   }
-
-
 
   getPositions(): void {
     this.worksSection = document.getElementById('works')
@@ -79,7 +82,7 @@ export class AppComponent {
     this.scrollPosition = this.scroller.getScrollPosition()
     console.log(this.scrollPosition[1])
     console.log("% de scroll", this.scrollPercent)
-    if(this.scrollPosition[1] < this.worksPos){
+    if (this.scrollPosition[1] < this.worksPos) {
       this.scrollPercent = 0
     }
     if (this.scrollPosition[1] >= (this.worksPos - 250) && this.scrollPosition[1] < (this.aboutPos - 450)) {
@@ -99,12 +102,14 @@ export class AppComponent {
       this.scroller.scrollToAnchor('works')
     }, 500);
   }
+
   scrollToAbout() {
     this.getPositions()
     setTimeout(() => {
       this.scroller.scrollToAnchor('aboutMe')
     }, 500);
   }
+
   scrollToContact() {
     this.getPositions()
     setTimeout(() => {
@@ -112,8 +117,28 @@ export class AppComponent {
     }, 500);
   }
 
+  sendMessage() {
+    const m: Message = {
+      date: new Date().toDateString(),
+      name: this.f.name.value,
+      email: this.f.email.value,
+      msg: this.f.message.value
+    }
+    if (this.cForm.invalid) {
+      return
+    }
+    this.crud.newMessage(m).then(success => {
+      this.mSent = true
+    }).catch(error => {
+      console.log("Error", error)
+    })
+  }
 
-
+scrollTop(){
+  window.scrollTo(0, 0)
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
 
 
 }

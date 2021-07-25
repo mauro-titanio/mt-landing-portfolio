@@ -89,33 +89,38 @@
             </div>
         </div>
     </div>
-    <div id="contact" class="container py-5">
+    <div id="contact" class="container py-5 mb-5">
         <div class="row py-5 justify-content-center">
             <div class="col-lg-6 col-md-8 col-sm-10 p-5 mt-5 rounded-3 shadow-lg" data-aos="fade-up" data-aos-delay="500">
-                <h2 class="text-center mb-4 fw-light op-5">Get in touch</h2>
-                <form class="text-primary" [formGroup]="cForm">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingName" placeholder="Name">
-                        <label for="floatingPassword ">Name</label>
-                    </div>
-                    <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput ">Email address</label>
-                    </div>
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Message</label>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-warning mt-4 w-100">Send</button>
-                    </div>
-                </form>
+                <div *ngIf="!mSent">
+                    <h2 class="text-center mb-4 fw-light op-5">Get in touch</h2>
+                    <form class="text-primary" [formGroup]="cForm">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingName" placeholder="Name" formControlName="name" [ngClass]="{'is-invalid': cForm.controls['name'].invalid && (cForm.controls['name'].dirty || cForm.controls['name'].touched)}">
+                            <label for="floatingPassword ">Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" [ngClass]="{'is-invalid': cForm.controls['email'].invalid && (cForm.controls['email'].dirty || cForm.controls['email'].touched)}">
+                            <label for="floatingInput ">Email address</label>
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" formControlName="message" [ngClass]="{'is-invalid': cForm.controls['message'].invalid && (cForm.controls['message'].dirty || cForm.controls['message'].touched)}"></textarea>
+                            <label for="floatingTextarea2">Message</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-warning mt-4 w-100" (click)="sendMessage()">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-center" *ngIf="mSent">
+                    <h5 class="py-3">Thank you {{f.name.value}}!</h5>
+                    <i class="bi bi-check-circle h1 text-success"></i>
+                    <p class="py-4 op-5">I will answer as soon as possible</p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="row py-3 bg-dark">
-        <div class="col-12 text-center">
-            <small>&copy; 2021 Mauro Titanio</small>
-        </div>
+    <div class="col-12 py-3 bg-dark mt-5 text-center">
+        <small>&copy; 2021 Mauro Titanio</small>
     </div>
 </div>
