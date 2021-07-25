@@ -1,5 +1,6 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -7,45 +8,69 @@ import { Component, HostListener } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mt-website';
+  cForm: FormGroup
   vh: number = 0
   vw: number = 0
-  scrollPosition: any
+  scrollPosition = [0, 0]
   worksSection: any
   worksPos: number = 0
   aboutSection: any
   aboutPos: number = 0
   contactSection: any
   contactPos: number = 0
-  top:any;
-  left:any;
-  expand=false;
+  top: any;
+  left: any;
+  expand = false
+  
 
-  constructor(private scroller: ViewportScroller) {
+  constructor(private scroller: ViewportScroller, private fb: FormBuilder) {
     this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
+    this.cForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      email: ['', [Validators.required, Validators.email]],
+      msg: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(1000)]],
+    })
+  }
+  get f() {
+    return this.cForm.controls
   }
 
-ngOnInit():void{
-  this.getPositions()
-}
+  getPositions():void {
+    this.worksSection = document.getElementById('works')
+    this.aboutSection = document.getElementById('aboutMe')
+    this.contactSection = document.getElementById('contact')
+    this.worksPos = this.worksSection.offsetTop
+    this.aboutPos = this.aboutSection.offsetTop
+    this.contactPos = this.contactSection.offsetTop
+    console.log("work está a: ", this.worksPos)
+    console.log("about está a: ", this.aboutPos)
+    console.log("contact está a: ", this.contactPos)
+  }
 
-@HostListener('document:click', ['$event'])
-onClick($event: any) {
-   this.expand=true;
-   setTimeout(() => {
-    this.expand=false;
-   }, 500)
-}
+  ngOnInit(): void {
+    this.getPositions()
+  }
 
-@HostListener('document:mousemove', ['$event'])
-onMousemove($event: { pageY: number; pageX: number; }) {
-  this.top=($event.pageY - 10)+ "px";
-  this.left= ($event.pageX - 10)+ "px";
-}
+
+
+  @HostListener('document:click', ['$event'])
+  onClick($event: any) {
+    this.expand = true;
+    setTimeout(() => {
+      this.expand = false;
+    }, 500)
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  onMousemove($event: { pageY: number; pageX: number; }) {
+    this.top = ($event.pageY - 10) + "px";
+    this.left = ($event.pageX - 10) + "px";
+  }
 
   printvh() {
     this.scrollPosition = this.scroller.getScrollPosition()
+    console.log(this.scrollPosition[1])
   }
 
   scrollToWorks() {
@@ -68,17 +93,7 @@ onMousemove($event: { pageY: number; pageX: number; }) {
   }
 
 
-  getPositions() {
-    this.worksSection = document.getElementById('works')
-    this.worksPos = this.worksSection.offsetTop
-    this.aboutSection = document.getElementById('aboutMe')
-    this.aboutPos = this.aboutSection.offsetTop
-    this.contactSection = document.getElementById('contact')
-    this.contactPos = this.contactSection.offsetTop
-    console.log("work está a: ", this.worksPos)
-    console.log("about está a: ", this.aboutPos)
-    console.log("contact está a: ", this.contactPos)
-  }
+
 
 
 }

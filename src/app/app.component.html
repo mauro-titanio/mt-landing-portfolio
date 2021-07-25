@@ -3,13 +3,13 @@
     <div class="position-fixed vw-100 py-2 bg-glass">
         <div class="row justify-content-center">
             <div class="col-3 py-3 text-center" (click)="scrollToWorks()">
-                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= worksPos - 150 && scrollPosition[1] < aboutPos - 350}">Works</a>
+                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= worksPos - 250 && scrollPosition[1] < aboutPos - 450}">Works</a>
             </div>
             <div class="col-3 py-3 text-center" (click)="scrollToAbout()">
-                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= aboutPos - 150 && scrollPosition[1] < contactPos - 350}">About me</a>
+                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= aboutPos - 250 && scrollPosition[1] < contactPos - 450}">About me</a>
             </div>
             <div class="col-3 py-3 text-center" (click)="scrollToContact()">
-                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= contactPos - 150}">Contact</a>
+                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= contactPos - 250}">Contact</a>
             </div>
         </div>
     </div>
@@ -71,29 +71,27 @@
     <div id="aboutMe" class="container py-5 min-vh-100">
         <div class="row justify-content-center py-5">
             <div class="col-lg-8 col-md-12 col-sm-12 p-5 mt-5">
-                <div class="col-md-9 mt-4 border-start ps-4 border-3">
-                    <p class="text" data-aos="fade-left" data-aos-delay="200">I am an Italian front-end developer based in Spain. <br> I studied art and communication and then I got interested in web design.<br>So, at the age of 28, I decided to learn front-end development. <br> I have some experience with the
-                        most sought after frameworks and libraries, Angular, React.js and JQuery, and with UI / UX design.<br>I never get tired of learning new things.</p>
-                    <a href="" class="ms-2" data-aos="fade-up" data-aos-delay="400"><i class="bi bi-github h4 text-warning"></i></a><a href="" class="ms-4" data-aos="fade-up" data-aos-delay="600"><i class="bi bi-linkedin h4 text-warning"></i></a><a href=""
-                        class="ms-4" data-aos="fade-up" data-aos-delay="800"><i class="bi bi-person-badge h4 text-warning"></i></a>
+                <div class="col-md-9 mt-4 border-start border-secondary ps-4 border-3">
+                    <p class="fw-lighter" data-aos="fade-left" data-aos-delay="200"><span class="fw-normal">I am an Italian front-end developer based in Spain.</span><br> I studied art and communication and then I got interested in web design.<br>So, at the age of 28, I decided to learn front-end development.<br>I
+                        have some experience with the most sought after frameworks and libraries, <span class="fw-normal">Angular, React.js and JQuery, and with UI / UX design.</span><br> I never get tired of learning new things</p>
+                    <a href=" " class="ms-2 " data-aos="fade-up" data-aos-delay="400"><i class="bi bi-github h4 text-warning"></i></a><a href=" " class="ms-4" data-aos="fade-up" data-aos-delay="600"><i class="bi bi-linkedin h4 text-warning"></i></a>
+                    <a href=" " class="ms-4 " data-aos="fade-up" data-aos-delay="800"><i class="bi bi-person-badge h4 text-warning"></i></a>
                 </div>
             </div>
         </div>
-
     </div>
     <div id="contact" class="container py-5 vh-100">
-        <div class="row py-5 justify-content-center">
+        <div class="row py-5 justify-content-center ">
             <div class="col-lg-6 col-md-8 col-sm-10 py-5 mt-5">
-                <h3 class="text-center mb-4 fw-light">Get in touch</h3>
-
-                <form class="text-primary">
+                <h3 class="text-center mb-4 fw-light ">Get in touch</h3>
+                <form class="text-primary" [formGroup]="cForm">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingName" placeholder="Name">
-                        <label for="floatingPassword">Name</label>
+                        <label for="floatingPassword ">Name</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Email address</label>
+                        <label for="floatingInput ">Email address</label>
                     </div>
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
@@ -102,13 +100,8 @@
                     <div class="text-center">
                         <button type="submit" class="btn btn-warning mt-4 w-100">Send</button>
                     </div>
-
-
                 </form>
             </div>
         </div>
-
     </div>
-
-
 </div>
