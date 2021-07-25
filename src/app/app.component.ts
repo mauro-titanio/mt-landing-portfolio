@@ -45,22 +45,26 @@ onMousemove($event: { pageY: number; pageX: number; }) {
 }
 
   printvh() {
-    console.log("vh:", this.vh)
     this.scrollPosition = this.scroller.getScrollPosition()
-    console.log("poos:", this.scrollPosition)
   }
 
   scrollToWorks() {
-    this.scroller.scrollToAnchor('works')
-    console.log("click")
+    this.getPositions()
+    setTimeout(() => {
+      this.scroller.scrollToAnchor('works')
+    }, 500);
   }
   scrollToAbout() {
-    this.scroller.scrollToAnchor('aboutMe')
-    console.log("click")
+    this.getPositions()
+    setTimeout(() => {
+      this.scroller.scrollToAnchor('aboutMe')
+    }, 500);
   }
   scrollToContact() {
-    this.scroller.scrollToAnchor('contact')
-    console.log("click")
+    this.getPositions()
+    setTimeout(() => {
+      this.scroller.scrollToAnchor('contact')
+    }, 500);
   }
 
 

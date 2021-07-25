@@ -108,3 +108,10 @@ a:hover {
     border: 1px solid $warning;
     background-color: transparent;
 }
+
+.bg-glass {
+    z-index: 200;
+    background: transparent;
+    backdrop-filter: blur( 2px);
+    -webkit-backdrop-filter: blur( 2px);
+}
