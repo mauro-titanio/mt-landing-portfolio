@@ -1,0 +1,10 @@
+.grayscale {
+    filter: contrast(1.2) grayscale(1);
+}
+
+.cube {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: -100px
+}
