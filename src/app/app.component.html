@@ -1,4 +1,4 @@
-<div class="img-bg bg-dark" (window:scroll)="printvh()">
+<div class="bg-primary" (window:scroll)="printvh()">
     <div class="cursor" [style.top]="top" [style.left]="left" [ngClass]="{'expand':expand}"></div>
     <div class="position-fixed vw-100 py-2 bg-glass">
         <div class="row justify-content-center">
@@ -27,9 +27,9 @@
     <div id="works" class="container py-5 min-vh-100">
         <div class="row justify-content-center py-5">
             <div class="col-10 py-5">
-                <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+                <div class="row row-cols-1 row-cols-lg-3 g-4 py-5">
                     <div class="col">
-                        <div class="card h-100 bg-dark" data-aos="fade-up" data-aos-delay="50">
+                        <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="50">
                             <img src="https://i.imgur.com/MkvQFfr.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Plataforma de asociaciones de Castilla-La Mancha</h5>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card h-100 bg-dark" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="200">
                             <img src="https://i.imgur.com/FXz3nRV.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">MiniBio App</h5>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card h-100 bg-dark" data-aos="fade-up" data-aos-delay="350">
+                        <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="350">
                             <img src="https://i.imgur.com/VtN53Dq.png" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Observatorio contra la LGTBIfobia de Castilla-La Mancha</h5>
@@ -68,10 +68,10 @@
             </div>
         </div>
     </div>
-    <div id="aboutMe" class="container py-5 min-vh-100">
+    <div id="aboutMe" class="container py-5">
         <div class="row justify-content-center py-5">
             <div class="col-lg-8 col-md-12 col-sm-12 p-5 mt-5">
-                <div class="col-md-9 mt-4 border-start border-secondary ps-4 border-3">
+                <div class="col-md-9 mt-4 border-start border-secondary p-4 border-3 shadow rounded-3">
                     <p class="fw-lighter" data-aos="fade-left" data-aos-delay="200"><span class="fw-normal">I am an Italian front-end developer based in Spain.</span><br> I studied art and communication and then I got interested in web design.<br>So, at the age of 28, I decided to learn front-end development.<br>I
                         have some experience with the most sought after frameworks and libraries, <span class="fw-normal">Angular, React.js and JQuery, and with UI / UX design.</span><br> I never get tired of learning new things</p>
                     <a href=" " class="ms-2 " data-aos="fade-up" data-aos-delay="400"><i class="bi bi-github h4 text-warning"></i></a><a href=" " class="ms-4" data-aos="fade-up" data-aos-delay="600"><i class="bi bi-linkedin h4 text-warning"></i></a>
@@ -82,7 +82,7 @@
     </div>
     <div id="contact" class="container py-5 vh-100">
         <div class="row py-5 justify-content-center ">
-            <div class="col-lg-6 col-md-8 col-sm-10 py-5 mt-5">
+            <div class="col-lg-6 col-md-8 col-sm-10 p-5 mt-5 rounded-3 shadow">
                 <h3 class="text-center mb-4 fw-light ">Get in touch</h3>
                 <form class="text-primary" [formGroup]="cForm">
                     <div class="form-floating mb-3">
