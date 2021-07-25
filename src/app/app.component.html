@@ -3,10 +3,10 @@
     <div class="position-fixed vw-100 pt-3">
         <div class="row justify-content-center">
             <div class="col-3 pt-4 text-center" (click)="scrollToWorks()">
-                <a [ngClass]="{'text-warning display-4': scrollPosition[1] >= worksPos - 150 && scrollPosition[1] < aboutPos - 150}">Works</a>
+                <a [ngClass]="{'text-warning display-4': scrollPosition[1] >= worksPos - 150 && scrollPosition[1] < aboutPos - 350}">Works</a>
             </div>
             <div class="col-3 pt-4 text-center" (click)="scrollToAbout()">
-                <a [ngClass]="{'text-warning display-4': scrollPosition[1] >= aboutPos - 150 && scrollPosition[1] < contactPos - 150}">About me</a>
+                <a [ngClass]="{'text-warning display-4': scrollPosition[1] >= aboutPos - 150 && scrollPosition[1] < contactPos - 350}">About me</a>
             </div>
             <div class="col-3 pt-4 text-center" (click)="scrollToContact()">
                 <a [ngClass]="{'text-warning display-4': scrollPosition[1] >= contactPos - 150}">Contact</a>
@@ -82,6 +82,31 @@
 
     </div>
     <div id="contact" class="container py-5 vh-100">
+        <div class="row py-5 justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10 py-5 mt-5">
+                <h3 class="text-center mb-4 fw-light">Get in touch</h3>
+
+                <form class="text-primary">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingName" placeholder="Name">
+                        <label for="floatingPassword">Name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Message</label>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-warning mt-4 w-100">Send</button>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
 
     </div>
 
