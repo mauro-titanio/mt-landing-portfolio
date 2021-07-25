@@ -3,13 +3,13 @@
     <div class="position-fixed vw-100 py-2 bg-glass">
         <div class="row justify-content-center">
             <div class="col-3 py-3 text-center" (click)="scrollToWorks()">
-                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= worksPos - 250 && scrollPosition[1] < aboutPos - 450}">Works</a>
+                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= (worksPos - 250) && scrollPosition[1] < (aboutPos - 450)}">Works</a>
             </div>
             <div class="col-3 py-3 text-center" (click)="scrollToAbout()">
-                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= aboutPos - 250 && scrollPosition[1] < contactPos - 450}">About me</a>
+                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= (aboutPos - 250) && scrollPosition[1] < (contactPos - 450)}">About me</a>
             </div>
             <div class="col-3 py-3 text-center" (click)="scrollToContact()">
-                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= contactPos - 250}">Contact</a>
+                <a [ngClass]="{'text-warning h1 fw-light': scrollPosition[1] >= (contactPos - 250)}">Contact</a>
             </div>
         </div>
     </div>
