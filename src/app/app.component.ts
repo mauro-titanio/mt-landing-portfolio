@@ -49,9 +49,6 @@ export class AppComponent {
     this.worksPos = this.worksSection.offsetTop
     this.aboutPos = this.aboutSection.offsetTop
     this.contactPos = this.contactSection.offsetTop
-    console.log("work está a: ", this.worksPos)
-    console.log("about está a: ", this.aboutPos)
-    console.log("contact está a: ", this.contactPos)
   }
 
   ngOnInit(): void {
@@ -66,7 +63,6 @@ export class AppComponent {
     }, 2000);
 
   }
-
 
 
   @HostListener('document:click', ['$event'])
@@ -90,8 +86,6 @@ export class AppComponent {
       let scrollPercent = scrollTop / (docHeight - winHeight);
       this.scrollPercent = Math.round(scrollPercent * 100);*/
     this.scrollPosition = this.scroller.getScrollPosition()
-    console.log(this.scrollPosition[1])
-    console.log("% de scroll", this.scrollPercent)
     if (this.scrollPosition[1] < this.worksPos) {
       this.scrollPercent = 0
     }
