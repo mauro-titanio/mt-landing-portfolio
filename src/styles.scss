@@ -86,7 +86,7 @@
             opacity: .5;
             top: -8px;
             left: -8px;
-            animation: cursorAnim2 .3s infinite alternate;
+            animation: cursorAnim2 0.5s infinite alternate;
         }
         @keyframes cursorAnim {
             from {
@@ -117,7 +117,7 @@
             }
         }
         .expand {
-            animation: cursorAnim3 .5s forwards;
+            animation: cursorAnim3 0.5s forwards;
             border: 1px solid $warning;
             background-color: transparent;
         }

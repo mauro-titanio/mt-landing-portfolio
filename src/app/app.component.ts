@@ -55,6 +55,9 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.getPositions()
+    setTimeout(() => {
+      this.getPositions()
+    }, 2000);
   }
 
 
