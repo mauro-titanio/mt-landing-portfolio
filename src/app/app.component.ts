@@ -28,6 +28,7 @@ export class AppComponent {
   msg: Message | undefined
   mSent = false
   loading = true
+  init = false
 
   constructor(private scroller: ViewportScroller, private fb: FormBuilder, private crud: CrudService, private spinner: NgxSpinnerService) {
     this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
@@ -37,6 +38,7 @@ export class AppComponent {
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(20), Validators.maxLength(1000)]],
     })
+    this.spinner.show()
   }
   get f() {
     return this.cForm.controls
@@ -52,12 +54,14 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-   this.spinner.show()
-   setTimeout(() => {
-     this.spinner.hide()
-     this.loading = false
-     this.getPositions()
-   }, 3000);
+    setTimeout(() => {
+      this.init = true
+    }, 1000);
+    setTimeout(() => {
+      this.spinner.hide()
+      this.loading = false
+      this.getPositions()
+    }, 3000);
     setTimeout(() => {
       this.getPositions()
     }, 2000);

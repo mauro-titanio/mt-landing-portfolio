@@ -1,131 +1,133 @@
 <div class="bg-primary" (window:scroll)="printvh()" [ngClass]="{'vh-100': loading}">
-    <div class="cursor" [style.top]="top" [style.left]="left" [ngClass]="{'expand':expand}"></div>
-    <div class="position-fixed vw-100 py-2 bg-glass z-200 shadow-sm">
-        <div class="row justify-content-center">
-            <div class="col-3 py-3 text-center" (click)="scrollToWorks()">
-                <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (worksPos - 250) && scrollPosition[1] < (aboutPos - 450)}">Works</a>
+    <div *ngIf="init">
+        <div class="cursor" [style.top]="top" [style.left]="left" [ngClass]="{'expand':expand}"></div>
+        <div class="position-fixed vw-100 py-2 bg-glass z-200 shadow-sm">
+            <div class="row justify-content-center">
+                <div class="col-3 py-3 text-center" (click)="scrollToWorks()">
+                    <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (worksPos - 250) && scrollPosition[1] < (aboutPos - 450)}">Works</a>
+                </div>
+                <div class="col-3 py-3 text-center" (click)="scrollToAbout()">
+                    <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (aboutPos - 50) && scrollPosition[1] < (contactPos - 450)}">About me</a>
+                </div>
+                <div class="col-3 py-3 text-center" (click)="scrollToContact()">
+                    <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (contactPos - 250)}">Contact</a>
+                </div>
             </div>
-            <div class="col-3 py-3 text-center" (click)="scrollToAbout()">
-                <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (aboutPos - 50) && scrollPosition[1] < (contactPos - 450)}">About me</a>
-            </div>
-            <div class="col-3 py-3 text-center" (click)="scrollToContact()">
-                <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (contactPos - 250)}">Contact</a>
+            <div class="progress bg-secondary op-5" style="height: 1px;">
+                <div class="progress-bar bg-warning" role="progressbar" [ngStyle]="{'width': scrollPercent + '%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
         </div>
-        <div class="progress bg-secondary op-5" style="height: 1px;">
-            <div class="progress-bar bg-warning" role="progressbar" [ngStyle]="{'width': scrollPercent + '%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-    </div>
 
-    <div class="container py-5 vh-100">
-        <div class="row p-5">
-            <div class="col-12 py-5">
-                <div class="header-title px-2 pb-1 mt-5 text-center" [ngClass]="{'fade-in': !loading}">
-                    <h1 class="display-2 fw-lighter m-0" [ngStyle]="{'transform': 'translateX(' + scrollPosition[1] + 'px)'}">Mauro Titanio</h1>
-                    <p class="fw-normal text-muted ms-1 h6" [ngStyle]="{'transform': 'translateX(' + -scrollPosition[1] + 'px)'}">Front-end developer</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="works" class="container py-5">
-        <div class="section-title text-center p-5 mt-4">
-            <h2 class="fw-lighter op-5">works</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-10 py-2">
-                <div class="row row-cols-1 row-cols-lg-3 g-4 py-3">
-                    <div class="col">
-                        <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="50">
-                            <img src="https://i.imgur.com/MkvQFfr.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Plataforma de asociaciones de Castilla-La Mancha</h5>
-                                <p class="card-text text-muted">Web-app made with Angular to improve associationism in Castilla-La Mancha</p>
-                            </div>
-                            <div class="card-footer bg-secondary">
-                                <small class="text-muted"><a href="https://plataforma-asociaciones-clm.vercel.app/" target="_blank" class="text-warning">Visit the project <i class="bi bi-arrow-right-circle ms-2 align-middle"></i></a></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="200">
-                            <img src="https://i.imgur.com/FXz3nRV.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">MiniBio App</h5>
-                                <p class="card-text text-muted">Web-app, similar to Linktree, made with Angular. </p>
-                            </div>
-                            <div class="card-footer bg-secondary">
-                                <small class="text-muted"><a href="https://mini-bio-app-test.vercel.app/" target="_blank" class="text-warning">Visit the project <i class="bi bi-arrow-right-circle ms-2 align-middle"></i></a></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="350">
-                            <img src="https://i.imgur.com/VtN53Dq.png" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Observatorio contra la LGTBIfobia de Castilla-La Mancha</h5>
-                                <p class="card-text text-muted">Corporative website made in WordPress</p>
-                            </div>
-                            <div class="card-footer bg-secondary">
-                                <small class="text-muted"><a href="https://observatoriolgtbiclm.com/" target="_blank" class="text-warning">Visit the project <i class="bi bi-arrow-right-circle ms-2 align-middle"></i></a></small>
-                            </div>
-                        </div>
+        <div class="container py-5 vh-100">
+            <div class="row p-5">
+                <div class="col-12 py-5">
+                    <div class="header-title px-2 pb-1 mt-5 text-center" [ngClass]="{'fade-in': !loading}">
+                        <h1 class="display-2 fw-lighter m-0" [ngStyle]="{'transform': 'translateX(' + scrollPosition[1] + 'px)'}">Mauro Titanio</h1>
+                        <p class="fw-normal text-muted ms-1 h6" [ngStyle]="{'transform': 'translateX(' + -scrollPosition[1] + 'px)'}">Front-end developer</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="aboutMe" class="container py-5">
-        <div class="section-title text-center pt-5 mt-4">
-            <h2 class="fw-lighter op-5">about me</h2>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-12 col-sm-12 p-3">
-                <div class="col-lg-9 col-md-8 col-sm-12 mt-4 border-start border-secondary p-4 border-3 shadow rounded-3" [ngClass]="{'mx-auto': vw <= 900}">
-                    <p class="fw-light" data-aos="fade-left" data-aos-delay="200"><span class="fw-normal">I am an Italian front-end developer based in Spain.</span><br> I studied art and communication and then I got interested in web design.<br>So, at the age of 28, I decided to learn front-end development.<br>I
-                        have some experience with the most sought after frameworks and libraries, <span class="fw-normal">Angular, React.js and JQuery, and with UI / UX design.</span><br> I never get tired of learning new things</p>
-                    <a href="https://github.com/mauro-titanio" target="_blank" class="ms-2 " data-aos="fade-up" data-aos-delay="400"><i class="bi bi-github h4 text-warning"></i></a>
-                    <a href="https://www.linkedin.com/in/mauro-titanio/" target="_blank" class="ms-4" data-aos="fade-up" data-aos-delay="600"><i class="bi bi-linkedin h4 text-warning"></i></a>
-                    <a href="https://drive.google.com/file/d/1QALwBr9fg7EducM39Yqjtjv6cgGnHS-N/view?usp=sharing" target="_blank" class="ms-4 " data-aos="fade-up" data-aos-delay="800"><i class="bi bi-person-badge h4 text-warning"></i></a>
+        <div id="works" class="container py-5">
+            <div class="section-title text-center p-5 mt-4">
+                <h2 class="fw-lighter op-5">works</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10 py-2">
+                    <div class="row row-cols-1 row-cols-lg-3 g-4 py-3">
+                        <div class="col">
+                            <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="50">
+                                <img src="https://i.imgur.com/MkvQFfr.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Plataforma de asociaciones de Castilla-La Mancha</h5>
+                                    <p class="card-text text-muted">Web-app made with Angular to improve associationism in Castilla-La Mancha</p>
+                                </div>
+                                <div class="card-footer bg-secondary">
+                                    <small class="text-muted"><a href="https://plataforma-asociaciones-clm.vercel.app/" target="_blank" class="text-warning">Visit the project <i class="bi bi-arrow-right-circle ms-2 align-middle"></i></a></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="200">
+                                <img src="https://i.imgur.com/FXz3nRV.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">MiniBio App</h5>
+                                    <p class="card-text text-muted">Web-app, similar to Linktree, made with Angular. </p>
+                                </div>
+                                <div class="card-footer bg-secondary">
+                                    <small class="text-muted"><a href="https://mini-bio-app-test.vercel.app/" target="_blank" class="text-warning">Visit the project <i class="bi bi-arrow-right-circle ms-2 align-middle"></i></a></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-100 bg-primary shadow" data-aos="fade-up" data-aos-delay="350">
+                                <img src="https://i.imgur.com/VtN53Dq.png" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Observatorio contra la LGTBIfobia de Castilla-La Mancha</h5>
+                                    <p class="card-text text-muted">Corporative website made in WordPress</p>
+                                </div>
+                                <div class="card-footer bg-secondary">
+                                    <small class="text-muted"><a href="https://observatoriolgtbiclm.com/" target="_blank" class="text-warning">Visit the project <i class="bi bi-arrow-right-circle ms-2 align-middle"></i></a></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="contact" class="container py-5 mb-5">
-        <div class="row pt-3 pb-5 justify-content-center">
-            <div class="col-lg-6 col-md-8 col-sm-10 p-5 mt-5 rounded-3 shadow-lg" data-aos="fade-up" data-aos-delay="500">
-                <div *ngIf="!mSent">
-                    <h2 class="text-center mb-4 fw-light op-5">Get in touch</h2>
-                    <form class="text-primary" [formGroup]="cForm">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingName" placeholder="Name" formControlName="name" [ngClass]="{'is-invalid': cForm.controls['name'].invalid && (cForm.controls['name'].dirty || cForm.controls['name'].touched)}">
-                            <label for="floatingPassword ">Name</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" [ngClass]="{'is-invalid': cForm.controls['email'].invalid && (cForm.controls['email'].dirty || cForm.controls['email'].touched)}">
-                            <label for="floatingInput ">Email address</label>
-                        </div>
-                        <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" formControlName="message" [ngClass]="{'is-invalid': cForm.controls['message'].invalid && (cForm.controls['message'].dirty || cForm.controls['message'].touched)}"></textarea>
-                            <label for="floatingTextarea2">Message</label>
-                        </div>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-warning mt-4 w-100" (click)="sendMessage()">Send</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="text-center" *ngIf="mSent">
-                    <h5 class="py-3">Thank you {{f.name.value}}!</h5>
-                    <i class="bi bi-check-circle h1 text-success"></i>
-                    <p class="py-4 op-5">I will answer as soon as possible</p>
+        <div id="aboutMe" class="container py-5">
+            <div class="section-title text-center pt-5 mt-4">
+                <h2 class="fw-lighter op-5">about me</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12 col-sm-12 p-3">
+                    <div class="col-lg-9 col-md-8 col-sm-12 mt-4 border-start border-secondary p-4 border-3 shadow rounded-3" [ngClass]="{'mx-auto': vw <= 900}">
+                        <p class="fw-light" data-aos="fade-left" data-aos-delay="200"><span class="fw-normal">I am an Italian front-end developer based in Spain.</span><br> I studied art and communication and then I got interested in web design.<br>So, at the age of 28, I decided to learn front-end development.<br>I
+                            have some experience with the most sought after frameworks and libraries, <span class="fw-normal">Angular, React.js and JQuery, and with UI / UX design.</span><br> I never get tired of learning new things</p>
+                        <a href="https://github.com/mauro-titanio" target="_blank" class="ms-2 " data-aos="fade-up" data-aos-delay="400"><i class="bi bi-github h4 text-warning"></i></a>
+                        <a href="https://www.linkedin.com/in/mauro-titanio/" target="_blank" class="ms-4" data-aos="fade-up" data-aos-delay="600"><i class="bi bi-linkedin h4 text-warning"></i></a>
+                        <a href="https://drive.google.com/file/d/1QALwBr9fg7EducM39Yqjtjv6cgGnHS-N/view?usp=sharing" target="_blank" class="ms-4 " data-aos="fade-up" data-aos-delay="800"><i class="bi bi-person-badge h4 text-warning"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container vh-10">
+        <div id="contact" class="container py-5 mb-5">
+            <div class="row pt-3 pb-5 justify-content-center">
+                <div class="col-lg-6 col-md-8 col-sm-10 p-5 mt-5 rounded-3 shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <div *ngIf="!mSent">
+                        <h2 class="text-center mb-4 fw-light op-5">Get in touch</h2>
+                        <form class="text-primary" [formGroup]="cForm">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingName" placeholder="Name" formControlName="name" [ngClass]="{'is-invalid': cForm.controls['name'].invalid && (cForm.controls['name'].dirty || cForm.controls['name'].touched)}">
+                                <label for="floatingPassword ">Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" formControlName="email" [ngClass]="{'is-invalid': cForm.controls['email'].invalid && (cForm.controls['email'].dirty || cForm.controls['email'].touched)}">
+                                <label for="floatingInput ">Email address</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" formControlName="message" [ngClass]="{'is-invalid': cForm.controls['message'].invalid && (cForm.controls['message'].dirty || cForm.controls['message'].touched)}"></textarea>
+                                <label for="floatingTextarea2">Message</label>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-warning mt-4 w-100" (click)="sendMessage()">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="text-center" *ngIf="mSent">
+                        <h5 class="py-3">Thank you {{f.name.value}}!</h5>
+                        <i class="bi bi-check-circle h1 text-success"></i>
+                        <p class="py-4 op-5">I will answer as soon as possible</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container vh-10">
 
-    </div>
-    <div class="col-12 py-3 bg-dark mt-5 text-center">
-        <small>&copy; 2021 Mauro Titanio</small>
+        </div>
+        <div class="col-12 py-3 bg-dark mt-5 text-center">
+            <small>&copy; 2021 Mauro Titanio</small>
+        </div>
     </div>
 </div>
 <ngx-spinner bdColor="#0b0e11" size="default" color="#fff" type="line-scale-pulse-out-rapid" [fullScreen]="true"></ngx-spinner>
