@@ -59,8 +59,8 @@ export class AppComponent {
    setTimeout(() => {
      this.spinner.hide()
      this.loading = false
+     this.getPositions()
    }, 3000);
-    this.getPositions()
     setTimeout(() => {
       this.getPositions()
     }, 2000);
