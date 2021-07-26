@@ -1,4 +1,4 @@
-<div class="bg-primary" (window:scroll)="printvh()">
+<div class="bg-primary" (window:scroll)="printvh()" [ngClass]="{'vh-100': loading}">
     <div class="cursor" [style.top]="top" [style.left]="left" [ngClass]="{'expand':expand}"></div>
     <div class="position-fixed vw-100 py-2 bg-glass z-200 shadow-sm">
         <div class="row justify-content-center">
@@ -20,9 +20,9 @@
     <div class="container py-5 vh-100">
         <div class="row p-5">
             <div class="col-12 py-5">
-                <div class="header-title px-2 pb-1 mt-5 text-center">
+                <div class="header-title px-2 pb-1 mt-5 text-center" [ngClass]="{'fade-in': !loading}">
                     <h1 class="display-2 fw-lighter m-0" [ngStyle]="{'transform': 'translateX(' + scrollPosition[1] + 'px)'}">Mauro Titanio</h1>
-                    <p class="fw-normal op-5 ms-1 h6" [ngStyle]="{'transform': 'translateX(' + -scrollPosition[1] + 'px)'}">Front-end developer</p>
+                    <p class="fw-normal text-muted ms-1 h6" [ngStyle]="{'transform': 'translateX(' + -scrollPosition[1] + 'px)'}">Front-end developer</p>
                 </div>
             </div>
         </div>
@@ -128,3 +128,4 @@
         <small>&copy; 2021 Mauro Titanio</small>
     </div>
 </div>
+<ngx-spinner bdColor="#0b0e11" size="default" color="#fff" type="line-scale-pulse-out-rapid" [fullScreen]="true"></ngx-spinner>

@@ -1,7 +1,7 @@
 import { ViewportScroller } from '@angular/common';
-
 import { Component, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Message } from './shared/models/message';
 import { CrudService } from './shared/services/crud.service';
 
@@ -27,8 +27,9 @@ export class AppComponent {
   scrollPercent: number = 0
   msg: Message | undefined
   mSent = false
+  loading = true
 
-  constructor(private scroller: ViewportScroller, private fb: FormBuilder, private crud: CrudService) {
+  constructor(private scroller: ViewportScroller, private fb: FormBuilder, private crud: CrudService, private spinner: NgxSpinnerService) {
     this.vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     this.vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     this.cForm = this.fb.group({
@@ -54,10 +55,16 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+   this.spinner.show()
+   setTimeout(() => {
+     this.spinner.hide()
+     this.loading = false
+   }, 3000);
     this.getPositions()
     setTimeout(() => {
       this.getPositions()
     }, 2000);
+
   }
 
 
@@ -137,11 +144,11 @@ export class AppComponent {
     })
   }
 
-scrollTop(){
-  window.scrollTo(0, 0)
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+  scrollTop() {
+    window.scrollTo(0, 0)
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
 
 
 }
