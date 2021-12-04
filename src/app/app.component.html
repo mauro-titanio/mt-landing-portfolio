@@ -4,7 +4,7 @@
         <div class="position-fixed vw-100 py-2 bg-glass z-200 shadow-sm">
             <div class="row justify-content-center">
                 <div class="col-3 py-3 text-center" (click)="scrollToWorks()">
-                    <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (worksPos - 250) && scrollPosition[1] < (aboutPos - 450)}">Works</a>
+                    <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (worksPos - 250) && scrollPosition[1] < (aboutPos - 450)}">Portfolio</a>
                 </div>
                 <div class="col-3 py-3 text-center" (click)="scrollToAbout()">
                     <a [ngClass]="{'text-warning fw-bolder': scrollPosition[1] >= (aboutPos - 50) && scrollPosition[1] < (contactPos - 450)}">About me</a>
@@ -30,7 +30,7 @@
         </div>
         <div id="works" class="container py-5 mb-5">
             <div class="section-title text-center p-5 mt-4">
-                <h2 class="fw-lighter op-5">works</h2>
+                <h2 class="fw-lighter op-5">portfolio</h2>
             </div>
             <div class="row justify-content-center">
                 <div class="col-10 py-2">
@@ -95,7 +95,7 @@
             <div class="row pt-3 pb-5 justify-content-center">
                 <div class="col-lg-6 col-md-8 col-sm-10 p-5 mt-5 rounded-3 shadow-lg" data-aos="fade-up" data-aos-delay="500">
                     <div *ngIf="!mSent">
-                        <h2 class="text-center mb-4 fw-light op-5">Get in touch</h2>
+                        <h2 class="text-center mb-4 fw-light op-5">get in touch</h2>
                         <form class="text-primary" [formGroup]="cForm">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingName" placeholder="Name" formControlName="name" [ngClass]="{'is-invalid': cForm.controls['name'].invalid && (cForm.controls['name'].dirty || cForm.controls['name'].touched)}">
